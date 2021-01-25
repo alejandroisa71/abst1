@@ -8,6 +8,7 @@ const app= express();
 
 // importando rutas
 const jugadorRoutes= require('./routes/jugador');
+const { urlencoded } = require('express');
 
 // settings
 app.set("port", process.env.PORT || 3000);
@@ -23,6 +24,8 @@ app.use(myConnection(mysql,{
     port:3306,
     database:"abst"
 },"single"));
+app.use(express.urlencoded({extended:false}));
+
 
 
 // routes
